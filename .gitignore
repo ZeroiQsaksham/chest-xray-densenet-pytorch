@@ -1,0 +1,7 @@
+# model weights (share via GitHub Release instead)
+*.pt
+*.pth
+# data
+data/
+__pycache__/
+.ipynb_checkpoints/
