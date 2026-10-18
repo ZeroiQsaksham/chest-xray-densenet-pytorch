@@ -4,7 +4,29 @@ Detects **14 thoracic conditions** (Cardiomegaly, Effusion, Edema, Mass, Pneumot
 
 ## Results
 
-_Training run in progress - per-class test ROC-AUC, ROC curves and Grad-CAM examples will be added here._
+Fine-tuned on **30,000 training images**, early-stopped on validation macro-AUC (best 0.828 at epoch 5), and evaluated on **10,000 held-out images** from the official NIH test split. No patient appears in more than one split.
+
+**Test macro ROC-AUC: 0.775** (14 classes)
+
+| Condition | Test AUC | Test positives |
+|---|---|---|
+| Emphysema | 0.864 | 406 |
+| Cardiomegaly | 0.847 | 444 |
+| Hernia | 0.845 | 31 |
+| Pneumothorax | 0.829 | 1047 |
+| Edema | 0.815 | 350 |
+| Effusion | 0.804 | 1866 |
+| Fibrosis | 0.800 | 182 |
+| Mass | 0.783 | 704 |
+| Atelectasis | 0.747 | 1300 |
+| Pleural thickening | 0.724 | 439 |
+| Nodule | 0.721 | 655 |
+| Consolidation | 0.717 | 724 |
+| Infiltration | 0.688 | 2373 |
+| Pneumonia | 0.668 | 220 |
+| **Macro average** | **0.775** | |
+
+Training: 8 epochs on one Kaggle T4 GPU (~2.7 min/epoch with mixed precision). Validation AUC peaked at epoch 5 and the best checkpoint was used for testing. Test AUC (0.775) is lower than validation AUC (0.828); scaling up to all ~78K training images is the next step.
 
 ## Approach
 
